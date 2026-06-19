@@ -1,0 +1,13 @@
+{
+  "name": "restaurant-table-reservation",
+  "version": "1.0.0",
+  "description": "Luxe Dining Restaurant Table Reservation System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
