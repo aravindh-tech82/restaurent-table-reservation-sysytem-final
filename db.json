@@ -1,0 +1,968 @@
+{
+  "users": [
+    {
+      "id": "usr-1",
+      "name": "Admin User",
+      "email": "admin@luxedining.com",
+      "phone": "+1 (555) 0199",
+      "password": "admin123",
+      "role": "Admin",
+      "createdAt": "2026-05-01T10:00:00Z"
+    },
+    {
+      "id": "usr-2",
+      "name": "Staff Member",
+      "email": "staff@luxedining.com",
+      "phone": "+1 (555) 0288",
+      "password": "staff123",
+      "role": "Staff",
+      "createdAt": "2026-05-02T10:00:00Z"
+    },
+    {
+      "id": "usr-3",
+      "name": "John Doe",
+      "email": "customer@luxedining.com",
+      "phone": "+1 (555) 0377",
+      "password": "customer123",
+      "role": "Customer",
+      "createdAt": "2026-05-03T10:00:00Z"
+    },
+    {
+      "id": "usr-4",
+      "name": "Sarah Jenkins",
+      "email": "sarah@example.com",
+      "phone": "+1 (555) 0466",
+      "password": "customer123",
+      "role": "Customer",
+      "createdAt": "2026-05-10T12:30:00Z"
+    },
+    {
+      "id": "usr-1780683446682",
+      "name": "arav",
+      "email": "aravindh1057335@gmail.com",
+      "phone": "+91 8610680124",
+      "password": "525252",
+      "role": "Customer",
+      "createdAt": "2026-06-05T18:17:26.682Z"
+    },
+    {
+      "id": "usr-1780726385939",
+      "name": "sajil",
+      "email": "aravindhs@karunya.edu.in",
+      "phone": "+918610680124",
+      "password": "525252",
+      "role": "Customer",
+      "createdAt": "2026-06-06T06:13:05.939Z"
+    }
+  ],
+  "tables": [
+    {
+      "id": "tbl-2",
+      "name": "Table 2",
+      "category": "2-Seater",
+      "capacity": 2,
+      "area": "indoor",
+      "x": -6,
+      "z": 0
+    },
+    {
+      "id": "tbl-3",
+      "name": "Table 3",
+      "category": "4-Seater",
+      "capacity": 4,
+      "area": "indoor",
+      "x": -2,
+      "z": -4
+    },
+    {
+      "id": "tbl-4",
+      "name": "Table 4",
+      "category": "4-Seater",
+      "capacity": 4,
+      "area": "indoor",
+      "x": -2,
+      "z": 0
+    },
+    {
+      "id": "tbl-5",
+      "name": "Family Suite 5",
+      "category": "Family",
+      "capacity": 8,
+      "area": "indoor",
+      "x": 2,
+      "z": -4
+    },
+    {
+      "id": "tbl-6",
+      "name": "VIP Booth 6",
+      "category": "VIP",
+      "capacity": 4,
+      "area": "indoor",
+      "x": 2,
+      "z": 1
+    },
+    {
+      "id": "tbl-7",
+      "name": "VIP Lounge 7",
+      "category": "VIP",
+      "capacity": 6,
+      "area": "indoor",
+      "x": 6,
+      "z": -4
+    },
+    {
+      "id": "tbl-8",
+      "name": "Patio Table 8",
+      "category": "2-Seater",
+      "capacity": 2,
+      "area": "outdoor",
+      "x": -6,
+      "z": 5
+    },
+    {
+      "id": "tbl-9",
+      "name": "Patio Table 9",
+      "category": "4-Seater",
+      "capacity": 4,
+      "area": "outdoor",
+      "x": -2,
+      "z": 5
+    },
+    {
+      "id": "tbl-10",
+      "name": "Patio Table 10",
+      "category": "4-Seater",
+      "capacity": 4,
+      "area": "outdoor",
+      "x": 2,
+      "z": 5
+    },
+    {
+      "id": "tbl-11",
+      "name": "Garden Lounge 11",
+      "category": "Family",
+      "capacity": 8,
+      "area": "outdoor",
+      "x": 6,
+      "z": 5
+    },
+    {
+      "id": "tbl-12",
+      "name": "Patio VIP 12",
+      "category": "VIP",
+      "capacity": 4,
+      "area": "outdoor",
+      "x": 6,
+      "z": 1
+    }
+  ],
+  "reservations": [
+    {
+      "id": "RES-8921",
+      "userId": "usr-3",
+      "userName": "John Doe",
+      "userEmail": "customer@luxedining.com",
+      "userPhone": "+1 (555) 0377",
+      "tableId": "tbl-6",
+      "tableName": "VIP Booth 6",
+      "date": "2026-06-01",
+      "timeSlot": "08:00 PM",
+      "guests": 4,
+      "seatingArea": "indoor",
+      "status": "Cancelled",
+      "notes": "Anniversary dinner. Would prefer quiet corner.",
+      "feedback": {
+        "rating": 5,
+        "comment": "Exceptional service and the 3D table selection made booking so easy!"
+      },
+      "timestamp": "2026-05-28T14:22:00Z"
+    },
+    {
+      "id": "RES-8922",
+      "userId": "usr-4",
+      "userName": "Sarah Jenkins",
+      "userEmail": "sarah@example.com",
+      "userPhone": "+1 (555) 0466",
+      "tableId": "tbl-3",
+      "tableName": "Table 3",
+      "date": "2026-06-02",
+      "timeSlot": "06:00 PM",
+      "guests": 3,
+      "seatingArea": "indoor",
+      "status": "Cancelled",
+      "notes": "No seafood please.",
+      "feedback": {
+        "rating": 4,
+        "comment": "Very pleasant evening, food was spectacular!"
+      },
+      "timestamp": "2026-05-30T10:15:00Z"
+    },
+    {
+      "id": "RES-8923",
+      "userId": "usr-3",
+      "userName": "John Doe",
+      "userEmail": "customer@luxedining.com",
+      "userPhone": "+1 (555) 0377",
+      "tableId": "tbl-8",
+      "tableName": "Patio Table 8",
+      "date": "2026-06-03",
+      "timeSlot": "12:00 PM",
+      "guests": 2,
+      "seatingArea": "outdoor",
+      "status": "Cancelled",
+      "notes": "Sunny table preferred.",
+      "feedback": {
+        "rating": 5,
+        "comment": "Beautiful outdoor garden ambiance."
+      },
+      "timestamp": "2026-06-01T09:05:00Z"
+    },
+    {
+      "id": "RES-9001",
+      "userId": "usr-3",
+      "userName": "John Doe",
+      "userEmail": "customer@luxedining.com",
+      "userPhone": "+1 (555) 0377",
+      "tableId": "tbl-7",
+      "tableName": "VIP Lounge 7",
+      "date": "2026-06-05",
+      "timeSlot": "08:00 PM",
+      "guests": 5,
+      "seatingArea": "indoor",
+      "status": "Approved",
+      "notes": "Business meeting discussion.",
+      "timestamp": "2026-06-03T18:40:00Z"
+    },
+    {
+      "id": "RES-9002",
+      "userId": "usr-4",
+      "userName": "Sarah Jenkins",
+      "userEmail": "sarah@example.com",
+      "userPhone": "+1 (555) 0466",
+      "tableId": "tbl-11",
+      "tableName": "Garden Lounge 11",
+      "date": "2026-06-06",
+      "timeSlot": "06:00 PM",
+      "guests": 6,
+      "seatingArea": "outdoor",
+      "status": "Cancelled",
+      "notes": "Birthday celebration.",
+      "timestamp": "2026-06-04T08:12:00Z"
+    },
+    {
+      "id": "RES-9449",
+      "userId": "usr-3",
+      "userName": "John Doe",
+      "userEmail": "customer@luxedining.com",
+      "userPhone": "+1 (555) 0377",
+      "tableId": "tbl-3",
+      "tableName": "Table 3",
+      "date": "60612-02-20",
+      "timeSlot": "04:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Cancelled",
+      "notes": "",
+      "timestamp": "2026-06-05T18:06:49.665Z"
+    },
+    {
+      "id": "RES-4077",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-2",
+      "tableName": "Table 2",
+      "date": "2026-06-25",
+      "timeSlot": "12:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Approved",
+      "notes": "",
+      "timestamp": "2026-06-05T18:19:27.269Z"
+    },
+    {
+      "id": "RES-5795",
+      "userId": "usr-1780726385939",
+      "userName": "sajil",
+      "userEmail": "aravindhs@karunya.edu.in",
+      "userPhone": "+918610680124",
+      "tableId": "tbl-5",
+      "tableName": "Family Suite 5",
+      "date": "2026-06-07",
+      "timeSlot": "08:00 PM",
+      "guests": 6,
+      "seatingArea": "indoor",
+      "status": "Approved",
+      "notes": "birthday cake ",
+      "timestamp": "2026-06-06T06:14:03.350Z"
+    },
+    {
+      "id": "RES-1487",
+      "userId": "usr-1780726385939",
+      "userName": "sajil",
+      "userEmail": "aravindhs@karunya.edu.in",
+      "userPhone": "+918610680124",
+      "tableId": "tbl-12",
+      "tableName": "Patio VIP 12",
+      "date": "2026-06-09",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "\n[Deposit Paid: ₹500 via Razorpay UPI]",
+      "timestamp": "2026-06-08T14:18:23.571Z"
+    },
+    {
+      "id": "RES-6039",
+      "userId": "usr-1780726385939",
+      "userName": "sajil",
+      "userEmail": "aravindhs@karunya.edu.in",
+      "userPhone": "+918610680124",
+      "tableId": "tbl-11",
+      "tableName": "Garden Lounge 11",
+      "date": "",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "\n[Deposit Paid: ₹500 via Razorpay UPI]",
+      "timestamp": "2026-06-08T14:20:00.994Z"
+    },
+    {
+      "id": "RES-1267",
+      "userId": "usr-3",
+      "userName": "John Doe",
+      "userEmail": "test_booking@example.com",
+      "userPhone": "+1 (555) 0377",
+      "tableId": "tbl-9",
+      "tableName": "Patio Table 9",
+      "date": "2026-06-12",
+      "timeSlot": "07:30 PM",
+      "guests": 4,
+      "seatingArea": "outdoor",
+      "status": "Cancelled",
+      "notes": "Gluten-free menu request.",
+      "timestamp": "2026-06-10T17:33:06.473Z"
+    },
+    {
+      "id": "RES-6505",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-6",
+      "tableName": "VIP Booth 6",
+      "date": "2026-06-12",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "\n[Deposit skipped: Booked only]",
+      "timestamp": "2026-06-11T15:09:05.709Z"
+    },
+    {
+      "id": "RES-1009",
+      "userId": "usr-1780726385939",
+      "userName": "sajil",
+      "userEmail": "aravindhs@karunya.edu.in",
+      "userPhone": "+918610680124",
+      "tableId": "tbl-10",
+      "tableName": "Patio Table 10",
+      "date": "2026-06-17",
+      "timeSlot": "04:00 PM",
+      "guests": 4,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "",
+      "timestamp": "2026-06-14T13:54:35.832Z"
+    },
+    {
+      "id": "RES-8047",
+      "userId": "usr-1780726385939",
+      "userName": "sajil",
+      "userEmail": "aravindhs@karunya.edu.in",
+      "userPhone": "+918610680124",
+      "tableId": "tbl-6",
+      "tableName": "VIP Booth 6",
+      "date": "2026-06-18",
+      "timeSlot": "04:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "",
+      "timestamp": "2026-06-14T14:00:22.991Z"
+    },
+    {
+      "id": "RES-2212",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-11",
+      "tableName": "Garden Lounge 11",
+      "date": "2026-06-18",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "",
+      "timestamp": "2026-06-17T17:37:47.748Z"
+    },
+    {
+      "id": "RES-9042",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-5",
+      "tableName": "Family Suite 5",
+      "date": "2026-06-19",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "\n[Deposit skipped: Booked only]",
+      "timestamp": "2026-06-18T15:56:49.638Z"
+    },
+    {
+      "id": "RES-4352",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-4",
+      "tableName": "Table 4",
+      "date": "2026-06-20",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "\n[Deposit skipped: Booked only]",
+      "timestamp": "2026-06-19T09:59:02.067Z"
+    },
+    {
+      "id": "RES-4336",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-11",
+      "tableName": "Garden Lounge 11",
+      "date": "2026-06-20",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "",
+      "timestamp": "2026-06-19T10:05:21.708Z"
+    },
+    {
+      "id": "RES-7822",
+      "userId": "usr-1780683446682",
+      "userName": "arav",
+      "userEmail": "aravindh1057335@gmail.com",
+      "userPhone": "+91 8610680124",
+      "tableId": "tbl-6",
+      "tableName": "VIP Booth 6",
+      "date": "2026-06-20",
+      "timeSlot": "06:00 PM",
+      "guests": 2,
+      "seatingArea": "indoor",
+      "status": "Pending",
+      "notes": "",
+      "timestamp": "2026-06-19T10:05:40.222Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-1",
+      "userName": "John Doe",
+      "rating": 5,
+      "comment": "Absolutely stellar! Selecting my exact VIP table beforehand is a game changer.",
+      "date": "2026-06-01"
+    },
+    {
+      "id": "rev-2",
+      "userName": "Sarah Jenkins",
+      "rating": 4,
+      "comment": "The ambiance is breathtaking and the staff was extremely accommodating. Recommended!",
+      "date": "2026-06-02"
+    },
+    {
+      "id": "rev-3",
+      "userName": "Marcus Brody",
+      "rating": 5,
+      "comment": "Excellent gourmet cuisine and a great selection of fine wines.",
+      "date": "2026-05-29"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "not-1781863540238",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-7822 for VIP Booth 6 on 2026-06-20 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-19T10:05:40.238Z"
+    },
+    {
+      "id": "not-1781863521721",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-4336 for Garden Lounge 11 on 2026-06-20 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-19T10:05:21.721Z"
+    },
+    {
+      "id": "not-1781863142079",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-4352 for Table 4 on 2026-06-20 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-19T09:59:02.079Z"
+    },
+    {
+      "id": "not-1781798209649",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-9042 for Family Suite 5 on 2026-06-19 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-18T15:56:49.649Z"
+    },
+    {
+      "id": "not-1781717867769",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-2212 for Garden Lounge 11 on 2026-06-18 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-17T17:37:47.769Z"
+    },
+    {
+      "id": "not-1781445722909",
+      "userId": "usr-4",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-9002 for Garden Lounge 11 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-14T14:02:02.909Z"
+    },
+    {
+      "id": "not-1781445720970",
+      "userId": "usr-1780726385939",
+      "title": "Reservation Approved",
+      "message": "Your booking reservation RES-5795 for Family Suite 5 has been approved by our staff.",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-14T14:02:00.970Z"
+    },
+    {
+      "id": "not-1781445623032",
+      "userId": "usr-1780726385939",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-8047 for VIP Booth 6 on 2026-06-18 at 04:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-14T14:00:23.032Z"
+    },
+    {
+      "id": "not-1781445275885",
+      "userId": "usr-1780726385939",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-1009 for Patio Table 10 on 2026-06-17 at 04:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-14T13:54:35.885Z"
+    },
+    {
+      "id": "not-1781190602972",
+      "userId": "usr-3",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-9449 for Table 3 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-11T15:10:02.972Z"
+    },
+    {
+      "id": "not-1781190545729",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-6505 for VIP Booth 6 on 2026-06-12 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-11T15:09:05.729Z"
+    },
+    {
+      "id": "not-1781112786510",
+      "userId": "usr-3",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-1267 for Patio Table 9 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-10T17:33:06.510Z"
+    },
+    {
+      "id": "not-1781112786500",
+      "userId": "usr-3",
+      "title": "Reservation Approved",
+      "message": "Your booking reservation RES-1267 for Patio Table 9 has been approved by our staff.",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-10T17:33:06.500Z"
+    },
+    {
+      "id": "not-1781112786479",
+      "userId": "usr-3",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-1267 for Patio Table 9 on 2026-06-12 at 07:30 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-10T17:33:06.479Z"
+    },
+    {
+      "id": "not-1780928401094",
+      "userId": "usr-1780726385939",
+      "title": "Payment Received",
+      "message": "Table reservation deposit of ₹500 verified for booking RES-6039. Welcome drink unlocked!",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-08T14:20:01.094Z"
+    },
+    {
+      "id": "not-1780928401011",
+      "userId": "usr-1780726385939",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-6039 for Garden Lounge 11 on  at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-08T14:20:01.012Z"
+    },
+    {
+      "id": "not-1780928303720",
+      "userId": "usr-1780726385939",
+      "title": "Payment Received",
+      "message": "Table reservation deposit of ₹500 verified for booking RES-1487. Welcome drink unlocked!",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-08T14:18:23.721Z"
+    },
+    {
+      "id": "not-1780928303591",
+      "userId": "usr-1780726385939",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-1487 for Patio VIP 12 on 2026-06-09 at 06:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-08T14:18:23.591Z"
+    },
+    {
+      "id": "not-1780726443362",
+      "userId": "usr-1780726385939",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-5795 for Family Suite 5 on 2026-06-07 at 08:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-06T06:14:03.363Z"
+    },
+    {
+      "id": "not-1780726385951",
+      "userId": "usr-1780726385939",
+      "title": "Welcome to Luxe Dining",
+      "message": "Hi sajil, thank you for registering! Explore our menu and 3D seating configurations to book your table.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-06T06:13:05.951Z"
+    },
+    {
+      "id": "not-1780683695664",
+      "userId": "usr-1780683446682",
+      "title": "Reservation Approved",
+      "message": "Your booking reservation RES-4077 for Table 2 has been approved by our staff.",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:21:35.665Z"
+    },
+    {
+      "id": "not-1780683693524",
+      "userId": "usr-4",
+      "title": "Reservation Approved",
+      "message": "Your booking reservation RES-9002 for Garden Lounge 11 has been approved by our staff.",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:21:33.524Z"
+    },
+    {
+      "id": "not-1780683691019",
+      "userId": "usr-3",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-8923 for Patio Table 8 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:21:31.020Z"
+    },
+    {
+      "id": "not-1780683682642",
+      "userId": "usr-4",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-8922 for Table 3 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:21:22.642Z"
+    },
+    {
+      "id": "not-1780683680783",
+      "userId": "usr-3",
+      "title": "Reservation Cancelled",
+      "message": "Your booking reservation RES-8921 for VIP Booth 6 has been cancelled by our staff.",
+      "type": "error",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:21:20.783Z"
+    },
+    {
+      "id": "not-1780683567280",
+      "userId": "usr-1780683446682",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-4077 for Table 2 on 2026-06-25 at 12:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:19:27.280Z"
+    },
+    {
+      "id": "not-1780683446694",
+      "userId": "usr-1780683446682",
+      "title": "Welcome to Luxe Dining",
+      "message": "Hi arav, thank you for registering! Explore our menu and 3D seating configurations to book your table.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:17:26.694Z"
+    },
+    {
+      "id": "not-1780682809675",
+      "userId": "usr-3",
+      "title": "Booking Pending Confirmation",
+      "message": "Your reservation RES-9449 for Table 3 on 60612-02-20 at 04:00 PM is now pending staff approval.",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-05T18:06:49.675Z"
+    },
+    {
+      "id": "not-1",
+      "userId": "usr-3",
+      "title": "Welcome to Luxe Dining",
+      "message": "Your account is active. Explore our 3D seating maps to book tables!",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-06-04T12:00:00Z"
+    }
+  ],
+  "logs": [
+    {
+      "id": "log-1781863085533-259",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-19T09:58:05.533Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781798157741-72",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-18T15:55:57.741Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781717830330-244",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-17T17:37:10.330Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781445706663-554",
+      "action": "Delete Table",
+      "user": "Admin",
+      "timestamp": "2026-06-14T14:01:46.663Z",
+      "details": "Deleted table Table 1"
+    },
+    {
+      "id": "log-1781445689893-168",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-14T14:01:29.893Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1781445567660-885",
+      "action": "Login Success (Google)",
+      "user": "sajil",
+      "timestamp": "2026-06-14T13:59:27.661Z",
+      "details": "User aravindhs@karunya.edu.in logged in via Google Auth"
+    },
+    {
+      "id": "log-1781445298678-872",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-14T13:54:58.678Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1781445212842-672",
+      "action": "Login Success (Google)",
+      "user": "sajil",
+      "timestamp": "2026-06-14T13:53:32.842Z",
+      "details": "User aravindhs@karunya.edu.in logged in via Google Auth"
+    },
+    {
+      "id": "log-1781190574816-7",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-11T15:09:34.816Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1781190477310-963",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-11T15:07:57.310Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781173734236-378",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-11T10:28:54.236Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781113334025-261",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-10T17:42:14.025Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781113282111-33",
+      "action": "Login Success",
+      "user": "sajil",
+      "timestamp": "2026-06-10T17:41:22.111Z",
+      "details": "User aravindhs@karunya.edu.in logged in from backend"
+    },
+    {
+      "id": "log-1781112940109-411",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-10T17:35:40.109Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1781112121266-648",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-10T17:22:01.266Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1781112003425-737",
+      "action": "Login Success (Google)",
+      "user": "arav",
+      "timestamp": "2026-06-10T17:20:03.425Z",
+      "details": "User aravindh1057335@gmail.com logged in via Google Auth"
+    },
+    {
+      "id": "log-1780928400966-89",
+      "action": "Payment Verified",
+      "user": "System",
+      "timestamp": "2026-06-08T14:20:00.967Z",
+      "details": "Mock payment verified: ID pay_mock_1780928400941161"
+    },
+    {
+      "id": "log-1780928303507-435",
+      "action": "Payment Verified",
+      "user": "System",
+      "timestamp": "2026-06-08T14:18:23.507Z",
+      "details": "Mock payment verified: ID pay_mock_1780928303493822"
+    },
+    {
+      "id": "log-1780928256269-260",
+      "action": "Login Success",
+      "user": "sajil",
+      "timestamp": "2026-06-08T14:17:36.269Z",
+      "details": "User aravindhs@karunya.edu.in logged in from backend"
+    },
+    {
+      "id": "log-1780922956320-479",
+      "action": "Login Success",
+      "user": "John Doe",
+      "timestamp": "2026-06-08T12:49:16.320Z",
+      "details": "User customer@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780921582225-48",
+      "action": "Login Success",
+      "user": "John Doe",
+      "timestamp": "2026-06-08T12:26:22.225Z",
+      "details": "User customer@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780726489046-346",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-06T06:14:49.046Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780726392898-326",
+      "action": "Login Success",
+      "user": "sajil",
+      "timestamp": "2026-06-06T06:13:12.898Z",
+      "details": "User aravindhs@karunya.edu.in logged in from backend"
+    },
+    {
+      "id": "log-1780725294774-783",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-06T05:54:54.774Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780683639495-648",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-05T18:20:39.495Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780683474111-83",
+      "action": "Login Success",
+      "user": "arav",
+      "timestamp": "2026-06-05T18:17:54.111Z",
+      "details": "User aravindh1057335@gmail.com logged in from backend"
+    },
+    {
+      "id": "log-1780683132862-977",
+      "action": "Login Success",
+      "user": "Admin User",
+      "timestamp": "2026-06-05T18:12:12.862Z",
+      "details": "User admin@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1780682476546-125",
+      "action": "Login Success",
+      "user": "John Doe",
+      "timestamp": "2026-06-05T18:01:16.546Z",
+      "details": "User customer@luxedining.com logged in from backend"
+    },
+    {
+      "id": "log-1",
+      "action": "System Init",
+      "user": "System",
+      "timestamp": "2026-06-04T12:00:00Z",
+      "details": "Database initialized on file storage"
+    }
+  ]
+}

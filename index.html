@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxe Dining | Restaurant Table Reservation System</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Reserve premium tables at Luxe Dining using an interactive 3D layout planner and our AI Reservation Assistant.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+  <!-- Custom Cursor Follower elements -->
+  <div id="custom-cursor-dot" class="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring" class="custom-cursor-ring"></div>
+
+  <!-- Twitch/Glitter Background Canvas -->
+  <canvas id="glitter-canvas"></canvas>
+
+  <!-- Global Alert Banner -->
+  <div id="global-alert-banner" class="alert-banner"></div>
+
+  <!-- Page 1: Splash Screen -->
+  <div id="page-splash">
+    <div class="splash-logo-container">
+      <img src="assets/logo.png" alt="Luxe Dining Logo" class="splash-logo">
+      <div class="splash-ring"></div>
+    </div>
+    <h1 class="splash-title">LUXE DINING</h1>
+    <div class="splash-loading-bar">
+      <div class="splash-loading-progress"></div>
+    </div>
+  </div>
+
+  <!-- Global Header Navigation -->
+  <header>
+    <div class="brand-container" onclick="window.location.hash='#welcome'" style="cursor: pointer;">
+      <img src="assets/logo.png" alt="Luxe Dining Logo" class="brand-logo">
+      <span class="brand-name">LUXE DINING</span>
+    </div>
+    
+    <nav>
+      <a href="#welcome" class="nav-link">Welcome</a>
+      <a href="#home" class="nav-link">Explore</a>
+      
+      <!-- Guest Links -->
+      <span id="nav-guest-links" style="display: flex; gap: 16px;">
+        <a href="#login" class="btn btn-secondary" style="padding: 6px 16px; font-size: 0.9rem;">Sign In</a>
+      </span>
+
+      <!-- Customer-Only Links -->
+      <span id="nav-customer-links" style="display: none; gap: 16px; align-items: center;">
+        <a href="#table-reservation" class="nav-link">Book a Table</a>
+        <a href="#my-reservations" class="nav-link">My Bookings</a>
+        <a href="#profile" class="nav-link">My Profile</a>
+      </span>
+
+      <!-- Admin & Staff Links -->
+      <span id="nav-admin-links" style="display: none; gap: 16px; align-items: center;">
+        <a href="#admin-dashboard" class="nav-link">Dashboard</a>
+        <a href="#manage-tables" class="nav-link">Tables</a>
+        <a href="#manage-reservations" class="nav-link">Reservations</a>
+        <a href="#customer-management" class="nav-link">Customers</a>
+        <a href="#reports" class="nav-link">Reports</a>
+      </span>
+
+      <!-- User Info Badge & Logout -->
+      <span id="nav-user-badge" style="display: none; gap: 12px; align-items: center;">
+        <div class="user-badge">
+          <span class="user-name">Guest</span>&nbsp;<small class="user-role" style="font-size:0.75rem; opacity:0.8;"></small>
+        </div>
+        <a href="#welcome" class="btn btn-danger logout-trigger" style="padding: 6px 12px; font-size: 0.85rem;">Logout</a>
+      </span>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme">☀️</button>
+    </nav>
+  </header>
+
+  <!-- SPA Core Pages Container -->
+  <main style="flex: 1; display: flex; flex-direction: column;">
+
+    <!-- Page 2: Welcome / Landing Page -->
+    <section id="page-welcome" class="page active">
+      <div class="hero-section" style="background-image: url('assets/banner.jpg'); height: 68vh; margin-bottom: 40px; display: flex; align-items: center; justify-content: center;">
+        <div class="hero-overlay"></div>
+        <div class="hero-split-grid" style="position: relative; z-index: 10;">
+          <div>
+            <div class="hero-tagline">Exquisite Culinary Craftsmanship</div>
+            <h2 class="hero-title" style="font-size: 3rem; margin-bottom: 20px;">Experience Gastronomy in Three Dimensions</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.15rem; line-height: 1.6; max-width: 600px;">
+              Indulge in fine gourmet selection, consult our personal AI dining advisor, and reserve your specific table using our interactive 3D layout planner.
+            </p>
+            <div class="hero-buttons" style="justify-content: flex-start;">
+              <a href="#table-reservation" class="btn btn-primary">Book a Table</a>
+              <a href="#login" class="btn btn-secondary">Sign In / Sign Up</a>
+            </div>
+          </div>
+          <!-- Moving 3D Cloche/Plate container -->
+          <div id="home-3d-hero-container"></div>
+        </div>
+      </div>
+      
+      <div class="about-section">
+        <div class="about-text">
+          <h2>About Luxe Dining</h2>
+          <p>Luxe Dining redefines high-end dining by marrying culinary excellence with state-of-the-art visual technology. Select your exact desired seating from our interactive 3D table planner, preview gourmet seasonal tasting courses, and consult our AI Assistant to cater specifically to your dining preferences.</p>
+          <a href="#home" class="btn btn-accent">Explore the Restaurant</a>
+        </div>
+        <div class="about-stats">
+          <div class="card stat-card glossy-highlight">
+            <div class="stat-number">3D</div>
+            <div class="stat-label">Visual Layout Planner</div>
+          </div>
+          <div class="card stat-card glossy-highlight">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Custom Seating Guarantee</div>
+          </div>
+          <div class="card stat-card glossy-highlight">
+            <div class="stat-number">★ 4.9</div>
+            <div class="stat-label">Guest Star Rating</div>
+          </div>
+          <div class="card stat-card glossy-highlight">
+            <div class="stat-number">AI</div>
+            <div class="stat-label">Personalized Booking Bot</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section-padding" style="border-top: 1px solid var(--border-glass);">
+        <h3 class="text-center" style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 40px;">What Our Guests Say</h3>
+        <div id="welcome-reviews-list" class="offers-slider"></div>
+      </div>
+    </section>
+
+    <!-- Page 3: Login Page -->
+    <section id="page-login" class="page">
+      <div class="auth-wrapper">
+        <div class="card auth-card">
+          <div class="auth-header">
+            <h2>Welcome Back</h2>
+            <p>Log in to manage your tables and reservations</p>
+          </div>
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">Email Address</label>
+              <input type="email" id="login-email" class="input-control" placeholder="name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="login-pass">Password</label>
+              <input type="password" id="login-pass" class="input-control" placeholder="••••••••" required>
+            </div>
+            <div style="text-align: right; margin-bottom: 20px;">
+              <a href="#welcome" onclick="showNotification('Password reset link sent to registered email.', 'success')" style="font-size: 0.85rem; color: var(--gold-primary);">Forgot Password?</a>
+            </div>
+            <button id="login-form-submit" type="submit" class="btn btn-primary w-100">Sign In</button>
+          </form>
+          <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; color: var(--text-muted); font-size: 0.85rem;">
+            <div style="flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-right: 10px;"></div>
+            <span>OR</span>
+            <div style="flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-left: 10px;"></div>
+          </div>
+          <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <div id="google-login-btn"></div>
+          </div>
+          <div class="form-footer">
+            Don't have an account? <a href="#signup">Register now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 4: Sign Up Page -->
+    <section id="page-signup" class="page">
+      <div class="auth-wrapper">
+        <div class="card auth-card">
+          <div class="auth-header">
+            <h2>Register Account</h2>
+            <p>Create a customer profile to start booking tables</p>
+          </div>
+          <form id="signup-form">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" class="input-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email Address</label>
+              <input type="email" id="signup-email" class="input-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-phone">Phone Number</label>
+              <input type="tel" id="signup-phone" class="input-control" placeholder="+1 (555) 0000" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-pass">Password</label>
+              <input type="password" id="signup-pass" class="input-control" placeholder="••••••••" required>
+            </div>
+            <button id="signup-form-submit" type="submit" class="btn btn-primary w-100">Register</button>
+          </form>
+          <div style="display: flex; align-items: center; justify-content: center; margin: 20px 0; color: var(--text-muted); font-size: 0.85rem;">
+            <div style="flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-right: 10px;"></div>
+            <span>OR</span>
+            <div style="flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); margin-left: 10px;"></div>
+          </div>
+          <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+            <div id="google-signup-btn"></div>
+          </div>
+          <div class="form-footer">
+            Already have an account? <a href="#login">Log In</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 5: Home Page -->
+    <section id="page-home" class="page">
+      <div class="home-container">
+        <!-- Search bar -->
+        <div class="search-banner">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="input-control" placeholder="Search cuisines, gourmet tables, special events...">
+          </div>
+          <button class="btn btn-primary">Search</button>
+        </div>
+
+        <!-- Featured -->
+        <h3 class="home-section-title">Featured Dining Areas</h3>
+        <div id="featured-list" class="grid-restaurants"></div>
+
+        <!-- Popular dishes -->
+        <h3 class="home-section-title">Chef's Gourmet Specialties</h3>
+        <div class="grid-dishes">
+          <div class="card dish-card glossy-highlight">
+            <img src="assets/logo.png" class="dish-img" alt="Tasting Dish 1">
+            <div class="dish-name">Caviar d'Aquitaine</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px;">Blini, Crème Fraîche, chives</p>
+            <div class="dish-price">$120</div>
+          </div>
+          <div class="card dish-card glossy-highlight">
+            <img src="assets/logo.png" class="dish-img" alt="Tasting Dish 2">
+            <div class="dish-name">Truffle Tagliolini</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px;">Piedmont white truffle, butter</p>
+            <div class="dish-price">$85</div>
+          </div>
+          <div class="card dish-card glossy-highlight">
+            <img src="assets/logo.png" class="dish-img" alt="Tasting Dish 3">
+            <div class="dish-name">Wagyu Beef A5</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px;">Kagoshima striploin, seasonal roots</p>
+            <div class="dish-price">$160</div>
+          </div>
+          <div class="card dish-card glossy-highlight">
+            <img src="assets/logo.png" class="dish-img" alt="Tasting Dish 4">
+            <div class="dish-name">Grand Soufflé</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px;">Grand Marnier, vanilla bean ice cream</p>
+            <div class="dish-price">$32</div>
+          </div>
+        </div>
+
+        <!-- Special offers -->
+        <h3 class="home-section-title">Special Offers</h3>
+        <div class="offers-slider">
+          <div class="card offer-card">
+            <div class="offer-details">
+              <h4>Champagne Welcome</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">Complimentary glass of Dom Pérignon on VIP bookings.</p>
+              <div class="offer-code">CODE: LUXEVIP</div>
+            </div>
+            <button class="btn btn-accent btn-sm" onclick="window.location.hash='#table-reservation'">Claim</button>
+          </div>
+          <div class="card offer-card">
+            <div class="offer-details">
+              <h4>Mid-Week Gastronomy</h4>
+              <p style="font-size: 0.9rem; color: var(--text-secondary);">15% off tasting menu bookings on Tuesdays & Wednesdays.</p>
+              <div class="offer-code">CODE: LUXEMID</div>
+            </div>
+            <button class="btn btn-accent btn-sm" onclick="window.location.hash='#table-reservation'">Claim</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 6: Restaurant Details Page -->
+    <section id="page-restaurant-details" class="page">
+      <div class="details-container">
+        <div class="details-hero" style="background-image: url('assets/banner.jpg');">
+          <div class="details-hero-info">
+            <h2 class="details-name">Luxe Dining Restaurant</h2>
+            <p style="color: var(--gold-primary); font-weight: 500; font-size: 1.1rem;">12 Regency Court, Manhattan, NY</p>
+          </div>
+        </div>
+
+        <div class="details-grid">
+          <div>
+            <!-- Menu preview -->
+            <div class="menu-preview-section">
+              <h3>Seasonal Gastronomic Menu</h3>
+              <div class="menu-grid">
+                <div class="menu-item">
+                  <span class="menu-item-name">Oyster & Yuzu Foam Starter</span>
+                  <span class="menu-item-price">$28</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-item-name">Maine Lobster Tail with Saffron</span>
+                  <span class="menu-item-price">$74</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-item-name">Roasted Duck Breast, Cherry Reduction</span>
+                  <span class="menu-item-price">$58</span>
+                </div>
+                <div class="menu-item">
+                  <span class="menu-item-name">Golden Feuilleté with Honey Sabayon</span>
+                  <span class="menu-item-price">$24</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="reviews-section">
+              <h3>Customer Reviews & Ratings</h3>
+              <div id="details-reviews-list"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card sidebar-card">
+              <h4 style="font-family: var(--font-header); font-size: 1.3rem; margin-bottom: 20px; color: var(--gold-primary);">Reservations Info</h4>
+              <div class="sidebar-row">
+                <span>Opening Hours</span>
+                <span>12:00 PM - 11:00 PM</span>
+              </div>
+              <div class="sidebar-row">
+                <span>Cuisine</span>
+                <span>Luxury French-Modern</span>
+              </div>
+              <div class="sidebar-row">
+                <span>Rating</span>
+                <span>★ 4.9 (428 reviews)</span>
+              </div>
+              <div class="sidebar-row" style="border-top:1px solid var(--border-glass); padding-top:16px; margin-top:20px;">
+                <span>Estimated Waitlist</span>
+                <span style="color: var(--accent-green);">Low Waitlist</span>
+              </div>
+              <a href="#table-reservation" class="btn btn-primary w-100 mt-4">Book Table</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 7: Table Reservation Page -->
+    <section id="page-table-reservation" class="page">
+      <div class="reservation-flow-container">
+        <h2 class="flow-title">Configure Reservation</h2>
+        
+        <div class="flow-step-bar">
+          <div class="flow-step active"><div class="flow-step-num">1</div>Configure</div>
+          <div class="flow-step"><div class="flow-step-num">2</div>Select Table</div>
+          <div class="flow-step"><div class="flow-step-num">3</div>Confirm</div>
+        </div>
+
+        <div class="card">
+          <!-- Setup Details -->
+          <div class="form-group">
+            <label for="booking-date">Choose Date</label>
+            <input type="date" id="booking-date" class="input-control" required>
+          </div>
+
+          <div class="form-group">
+            <label for="booking-guests">Number of Guests</label>
+            <select id="booking-guests" class="input-control">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="8">8 Guests (Family Suite)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Select Time Slot</label>
+            <div class="time-slot-grid">
+              <div class="time-slot-btn" data-slot="12:00 PM">12:00 PM</div>
+              <div class="time-slot-btn" data-slot="02:00 PM">02:00 PM</div>
+              <div class="time-slot-btn" data-slot="04:00 PM">04:00 PM</div>
+              <div class="time-slot-btn selected" data-slot="06:00 PM">06:00 PM</div>
+              <div class="time-slot-btn" data-slot="08:00 PM">08:00 PM</div>
+              <div class="time-slot-btn" data-slot="10:00 PM">10:00 PM</div>
+            </div>
+          </div>
+
+          <!-- AI warning container -->
+          <div id="peak-warning-container" style="display: none; padding:12px; border: 1px dashed var(--gold-primary); background:rgba(212,175,55,0.06); border-radius:8px; margin: 20px 0;">
+            <div style="font-size:0.85rem; display:flex; gap:10px;">
+              <span>🤖</span>
+              <div>
+                <strong>Luxe AI Prediction: <span class="peak-pct">90%</span> occupancy risk</strong>
+                <p class="peak-desc" style="font-size:0.8rem; color:var(--text-secondary); margin-top:4px;"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Seating Preference Area</label>
+            <div class="seating-options-grid">
+              <div class="seating-option selected" data-area="indoor">
+                <i>🍽</i>
+                <h4>Indoor Seating</h4>
+                <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">Cozy warm lighting, main restaurant dining hall.</p>
+              </div>
+              <div class="seating-option" data-area="outdoor">
+                <i>🍃</i>
+                <h4>Outdoor Patio</h4>
+                <p style="font-size:0.75rem; color:var(--text-secondary); margin-top:4px;">Stone terrace, pleasant gardens, fresh evening breeze.</p>
+              </div>
+            </div>
+          </div>
+
+          <button id="reserve-setup-proceed" class="btn btn-primary w-100 mt-4">Proceed to Seating Map</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 8: Table Layout Page (3D Module) -->
+    <section id="page-table-layout" class="page">
+      <div class="reservation-flow-container" style="max-width:1200px;">
+        <h2 class="flow-title">Select Your Custom Seating</h2>
+        <div class="flow-step-bar" style="max-width:750px; margin: 0 auto 30px auto;">
+          <div class="flow-step done"><div class="flow-step-num">1</div>Configure</div>
+          <div class="flow-step active"><div class="flow-step-num">2</div>Select Table</div>
+          <div class="flow-step"><div class="flow-step-num">3</div>Confirm</div>
+        </div>
+
+        <p id="layout-info-header" style="text-align: center; color: var(--gold-primary); margin-bottom: 20px; font-weight: 500;"></p>
+      </div>
+
+      <div class="layout-3d-wrapper">
+        <!-- Three.js Canvas container -->
+        <div class="canvas-container" id="three-d-canvas-container">
+          <div class="canvas-overlay-ui">
+            💡 <strong>Controls:</strong> Left click + Drag to Orbit. Right click + Drag to Pan. Scroll to Zoom. Click a table to select.
+          </div>
+          <!-- Legend -->
+          <div class="canvas-legend">
+            <div class="legend-item"><div class="legend-color" style="background:#10b981;"></div>Available</div>
+            <div class="legend-item"><div class="legend-color" style="background:#ef4444;"></div>Reserved</div>
+            <div class="legend-item"><div class="legend-color" style="background:#d4af37;"></div>Selected</div>
+          </div>
+        </div>
+
+        <!-- Seating Selector Side Info Panel -->
+        <div class="table-details-panel">
+          <div class="card" style="flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <h3 style="font-family: var(--font-header); font-size:1.4rem; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:10px;">Selected Table</h3>
+              <div id="layout-selection-details">
+                <!-- Javascript will load detailed properties here -->
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <button id="layout-reserve-submit" class="btn btn-primary w-100" disabled>Reserve Selected Seat</button>
+              <a href="#table-reservation" class="btn btn-secondary w-100 mt-2">← Back to Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 9: Reservation Confirmation Page -->
+    <section id="page-confirmation" class="page">
+      <div class="reservation-flow-container">
+        <h2 class="flow-title">Confirm Your Reservation</h2>
+        <div class="flow-step-bar">
+          <div class="flow-step done"><div class="flow-step-num">1</div>Configure</div>
+          <div class="flow-step done"><div class="flow-step-num">2</div>Select Table</div>
+          <div class="flow-step active"><div class="flow-step-num">3</div>Confirm</div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-family:var(--font-header); font-size: 1.4rem; color: var(--gold-primary); margin-bottom: 20px;">Reservation Summary</h3>
+          
+          <div class="confirmation-details">
+            <div class="confirmation-row"><span>Guest Name:</span> <strong id="conf-name"></strong></div>
+            <div class="confirmation-row"><span>Email Address:</span> <strong id="conf-email"></strong></div>
+            <div class="confirmation-row"><span>Phone Number:</span> <strong id="conf-phone"></strong></div>
+            <div class="confirmation-row"><span>Reservation Date:</span> <strong id="conf-date"></strong></div>
+            <div class="confirmation-row"><span>Selected Time:</span> <strong id="conf-slot"></strong></div>
+            <div class="confirmation-row"><span>Guests Count:</span> <strong id="conf-guests"></strong></div>
+            <div class="confirmation-row"><span>Table Selected:</span> <strong id="conf-table"></strong></div>
+            <div class="confirmation-row"><span>Dining Zone:</span> <strong id="conf-area"></strong></div>
+          </div>
+
+          <div class="form-group">
+            <label for="booking-special-requests">Special Dietary or Seating Notes (Optional)</label>
+            <textarea id="booking-special-requests" rows="3" class="input-control" style="resize:none;" placeholder="E.g., Allergies, birthday cake holding, wheelchair accessibility..."></textarea>
+          </div>
+
+          <div style="display: flex; gap: 16px; margin-top: 30px;">
+            <a href="#table-layout" class="btn btn-secondary" style="flex:1;">Change Table</a>
+            <button id="confirm-booking-btn" class="btn btn-primary" style="flex:2;">Confirm & Reserve Table</button>
+          </div>
+
+          <div style="text-align: center; margin-top: 16px;">
+            <a href="#payment" style="font-size:0.85rem; color:var(--gold-primary); text-decoration:underline;">Proceed with pre-payment (Optional)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 10: Payment Page (Optional) -->
+    <section id="page-payment" class="page">
+      <div class="reservation-flow-container">
+        <h2 class="flow-title">Secure Pre-Payment</h2>
+        <div class="card" style="text-align: center; padding: 30px;">
+          <div style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 16px;">💳</div>
+          <h3 style="font-family: var(--font-header); font-size: 1.5rem; margin-bottom: 12px; color: var(--gold-primary);">Luxe Deposit Holding Fee</h3>
+          <p class="text-muted" style="font-size: 0.92rem; margin-bottom: 24px; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto;">
+            Pre-pay a deposit holding fee of <strong>₹500.00</strong> to secure your VIP table reservation. Online payment is processed securely via <strong>Razorpay</strong> and supports all major UPI apps, Credit/Debit cards, Net Banking, and Wallets.
+          </p>
+          
+          <div style="background: rgba(229, 193, 133, 0.04); border: 1px solid var(--border-glass); padding: 16px; border-radius: 8px; margin-bottom: 24px; text-align: left; max-width: 440px; margin-left: auto; margin-right: auto;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.88rem;">
+              <span>Table Deposit Holding Fee:</span>
+              <strong>₹500.00</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:0.88rem; color: var(--text-muted);">
+              <span>Complementary Item:</span>
+              <span style="color: var(--gold-primary);">VIP Welcome Drink ✓</span>
+            </div>
+          </div>
+
+          <button id="razorpay-pay-btn" class="btn btn-primary w-100" style="max-width: 440px; margin: 0 auto 12px auto; display: block;">
+            Pay with UPI / Razorpay (₹500.00)
+          </button>
+          <button id="payment-skip-btn" class="btn btn-secondary w-100" style="max-width: 440px; margin: 0 auto; display: block;">
+            Skip Payment / Book Only
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 11: Booking Success Page -->
+    <section id="page-success" class="page">
+      <div class="success-screen card">
+        <div class="success-icon-wrapper">✓</div>
+        <h2 style="font-family: var(--font-header); font-size: 2.2rem; margin-bottom: 12px; color: var(--gold-primary);">Booking Confirmed!</h2>
+        <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">Your table has been reserved. A confirmation email and calendar invitation have been sent to your profile address.</p>
+        
+        <div style="background: rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:16px; border-radius:8px; margin-bottom:30px;">
+          <span style="font-size:0.85rem; color:var(--text-secondary);">CONFIRMATION ID</span>
+          <div id="success-booking-id" style="font-family: var(--font-header); font-size: 1.8rem; font-weight:700; color: var(--gold-primary); margin-top:6px;"></div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <a href="#my-reservations" class="btn btn-primary">View My Bookings</a>
+          <a href="#home" class="btn btn-secondary">Explore More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 12: My Reservations Page -->
+    <section id="page-my-reservations" class="page">
+      <div class="reservations-container">
+        <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 30px; text-align: center;">My Reservations History</h2>
+        
+        <div id="reservations-list" style="display:flex; flex-direction:column; gap:20px;">
+          <!-- JavaScript dynamic injections -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 13: User Profile Page -->
+    <section id="page-profile" class="page">
+      <div class="profile-wrapper">
+        <div class="card profile-avatar-card">
+          <div class="profile-avatar" id="prof-avatar-letter">J</div>
+          <h3 id="prof-name-title" style="font-family: var(--font-header); font-size: 1.4rem;">John Doe</h3>
+          <p id="prof-email-title" style="font-size:0.9rem; color:var(--text-secondary); margin-bottom: 20px;"></p>
+          
+          <button class="btn btn-danger w-100 logout-trigger">Sign Out</button>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <div class="card">
+            <h3 style="font-family: var(--font-header); font-size:1.3rem; margin-bottom:20px; border-bottom:1px solid var(--border-glass); padding-bottom:10px;">Edit Account Settings</h3>
+            <form id="profile-edit-form">
+              <div class="form-group">
+                <label for="profile-name">Full Name</label>
+                <input type="text" id="profile-name" class="input-control" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-email">Email Address</label>
+                <input type="email" id="profile-email" class="input-control" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-phone">Phone Number</label>
+                <input type="tel" id="profile-phone" class="input-control" required>
+              </div>
+              <button id="profile-form-submit" type="submit" class="btn btn-primary mt-4">Save Changes</button>
+            </form>
+          </div>
+
+          <!-- AI preference analysis box -->
+          <div class="card" id="profile-ai-preference" style="background:rgba(212,175,55,0.05); border-color:var(--gold-primary);">
+            <!-- AI preference text dynamically computed -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMIN PAGES (Admin Login handles in standard sign-in redirection, Admin Layout toggles) -->
+    <!-- Page 15: Admin Dashboard -->
+    <section id="page-admin-dashboard" class="page">
+      <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <h3 style="font-family: var(--font-header); margin-bottom: 20px; color: var(--gold-primary);">Luxe Manager</h3>
+          <a href="#admin-dashboard" class="admin-side-link active">📊 Dashboard</a>
+          <a href="#manage-tables" class="admin-side-link">🪑 Manage Tables</a>
+          <a href="#manage-reservations" class="admin-side-link">📅 Bookings Manager</a>
+          <a href="#customer-management" class="admin-side-link">👥 Customer List</a>
+          <a href="#reports" class="admin-side-link">📈 Analytics Reports</a>
+        </aside>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <h2 style="font-family: var(--font-header); font-size: 2.2rem; margin-bottom: 30px;">Overview Statistics</h2>
+          
+          <div class="metrics-row">
+            <div class="card metric-card">
+              <div>
+                <span class="text-muted" style="font-size:0.85rem;">TOTAL RESERVATIONS</span>
+                <div class="metric-val" id="metric-total-bookings">0</div>
+              </div>
+              <div class="metric-icon">📅</div>
+            </div>
+            <div class="card metric-card">
+              <div>
+                <span class="text-muted" style="font-size:0.85rem;">OCCUPIED TABLES TODAY</span>
+                <div class="metric-val" id="metric-occupied-tables">0</div>
+              </div>
+              <div class="metric-icon">🍽</div>
+            </div>
+            <div class="card metric-card">
+              <div>
+                <span class="text-muted" style="font-size:0.85rem;">AVAILABLE TABLES</span>
+                <div class="metric-val" id="metric-available-tables">0</div>
+              </div>
+              <div class="metric-icon">🪑</div>
+            </div>
+            <div class="card metric-card">
+              <div>
+                <span class="text-muted" style="font-size:0.85rem;">ACTIVE CUSTOMERS</span>
+                <div class="metric-val" id="metric-total-customers">0</div>
+              </div>
+              <div class="metric-icon">👥</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-family:var(--font-header); font-size:1.4rem; margin-bottom:20px;">Daily Reservation Schedule</h3>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Customer Name</th>
+                    <th>Seating Table</th>
+                    <th>Reserved Slot</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-today-bookings-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 16: Manage Tables Page -->
+    <section id="page-manage-tables" class="page">
+      <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <h3 style="font-family: var(--font-header); margin-bottom: 20px; color: var(--gold-primary);">Luxe Manager</h3>
+          <a href="#admin-dashboard" class="admin-side-link">📊 Dashboard</a>
+          <a href="#manage-tables" class="admin-side-link active">🪑 Manage Tables</a>
+          <a href="#manage-reservations" class="admin-side-link">📅 Bookings Manager</a>
+          <a href="#customer-management" class="admin-side-link">👥 Customer List</a>
+          <a href="#reports" class="admin-side-link">📈 Analytics Reports</a>
+        </aside>
+
+        <!-- Content -->
+        <div class="admin-content" style="display:grid; grid-template-columns: 2fr 1fr; gap:32px;">
+          <div>
+            <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 24px;">Manage Restaurant Seating Layout</h2>
+            <div class="card">
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Table Name</th>
+                      <th>Category</th>
+                      <th>Capacity</th>
+                      <th>Zone</th>
+                      <th>3D Coord</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-tables-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add / Edit Form -->
+          <div class="card" style="height: fit-content;">
+            <h3 id="table-form-title" style="font-family:var(--font-header); margin-bottom:20px; color:var(--gold-primary);">Configure Table</h3>
+            <form id="admin-table-config-form">
+              <input type="hidden" id="table-id-hidden">
+              <div class="form-group">
+                <label for="table-name">Table Label</label>
+                <input type="text" id="table-name" class="input-control" placeholder="Table 13" required>
+              </div>
+              <div class="form-group">
+                <label for="table-category">Seating Category</label>
+                <select id="table-category" class="input-control">
+                  <option value="2-Seater">2-Seater</option>
+                  <option value="4-Seater">4-Seater</option>
+                  <option value="Family">Family Suite (6-8)</option>
+                  <option value="VIP">VIP Lounge (Premium)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="table-capacity">Seating Capacity</label>
+                <input type="number" id="table-capacity" class="input-control" value="4" min="1" max="10" required>
+              </div>
+              <div class="form-group">
+                <label for="table-area">Zone Area</label>
+                <select id="table-area" class="input-control">
+                  <option value="indoor">Indoor Dining Room</option>
+                  <option value="outdoor">Outdoor Patio</option>
+                </select>
+              </div>
+              <div style="display:flex; gap:16px;">
+                <div class="form-group" style="flex:1;">
+                  <label for="table-x-coord">3D X-Position</label>
+                  <input type="number" step="0.5" id="table-x-coord" class="input-control" value="0" required>
+                </div>
+                <div class="form-group" style="flex:1;">
+                  <label for="table-z-coord">3D Z-Position</label>
+                  <input type="number" step="0.5" id="table-z-coord" class="input-control" value="0" required>
+                </div>
+              </div>
+              <button id="table-form-submit-btn" type="submit" class="btn btn-primary w-100 mt-4">Add Table</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 17: Manage Reservations Page -->
+    <section id="page-manage-reservations" class="page">
+      <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <h3 style="font-family: var(--font-header); margin-bottom: 20px; color: var(--gold-primary);">Luxe Manager</h3>
+          <a href="#admin-dashboard" class="admin-side-link">📊 Dashboard</a>
+          <a href="#manage-tables" class="admin-side-link">🪑 Manage Tables</a>
+          <a href="#manage-reservations" class="admin-side-link active">📅 Bookings Manager</a>
+          <a href="#customer-management" class="admin-side-link">👥 Customer List</a>
+          <a href="#reports" class="admin-side-link">📈 Analytics Reports</a>
+        </aside>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+            <h2 style="font-family: var(--font-header); font-size: 2rem;">Manage Guest Reservations</h2>
+            
+            <input type="text" id="admin-res-search" class="input-control" placeholder="Search by ID, name, date..." style="width:250px;">
+          </div>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Customer Name</th>
+                    <th>Table</th>
+                    <th>Date & Time</th>
+                    <th>Guests</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-reservations-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 18: Customer Management Page -->
+    <section id="page-customer-management" class="page">
+      <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <h3 style="font-family: var(--font-header); margin-bottom: 20px; color: var(--gold-primary);">Luxe Manager</h3>
+          <a href="#admin-dashboard" class="admin-side-link">📊 Dashboard</a>
+          <a href="#manage-tables" class="admin-side-link">🪑 Manage Tables</a>
+          <a href="#manage-reservations" class="admin-side-link">📅 Bookings Manager</a>
+          <a href="#customer-management" class="admin-side-link active">👥 Customer List</a>
+          <a href="#reports" class="admin-side-link">📈 Analytics Reports</a>
+        </aside>
+
+        <!-- Content -->
+        <div class="admin-content">
+          <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 30px;">Customer Database Profiles</h2>
+
+          <div class="card">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Phone</th>
+                    <th>Bookings Volume</th>
+                    <th>Registration Date</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-customers-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 19: Reports Page -->
+    <section id="page-reports" class="page">
+      <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <h3 style="font-family: var(--font-header); margin-bottom: 20px; color: var(--gold-primary);">Luxe Manager</h3>
+          <a href="#admin-dashboard" class="admin-side-link">📊 Dashboard</a>
+          <a href="#manage-tables" class="admin-side-link">🪑 Manage Tables</a>
+          <a href="#manage-reservations" class="admin-side-link">📅 Bookings Manager</a>
+          <a href="#customer-management" class="admin-side-link">👥 Customer List</a>
+          <a href="#reports" class="admin-side-link active">📈 Analytics Reports</a>
+        </aside>
+
+        <!-- Content -->
+        <div class="admin-content" style="display:grid; grid-template-columns: 2fr 1fr; gap:32px; padding:30px;">
+          <div>
+            <h2 style="font-family: var(--font-header); font-size: 2rem; margin-bottom: 24px;">Analytics, Predictions & Insights</h2>
+            
+            <div class="charts-grid">
+              <div class="card">
+                <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--text-secondary);">Table Occupancy Ratio</h4>
+                <div class="chart-wrapper"><canvas id="chart-occupancy"></canvas></div>
+              </div>
+              <div class="card">
+                <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--text-secondary);">Weekly Reservations Frequency</h4>
+                <div class="chart-wrapper"><canvas id="chart-weekly"></canvas></div>
+              </div>
+              <div class="card">
+                <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--text-secondary);">AI Peak-Time Demand Prediction</h4>
+                <div class="chart-wrapper"><canvas id="chart-peak"></canvas></div>
+              </div>
+              <div class="card">
+                <h4 style="font-size:0.95rem; margin-bottom:12px; color:var(--text-secondary);">Simulated Weekly Revenue ($)</h4>
+                <div class="chart-wrapper"><canvas id="chart-revenue"></canvas></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Audit Log -->
+          <div class="card">
+            <h3 style="font-family:var(--font-header); margin-bottom:20px; color:var(--gold-primary);">Activity Audit Trail</h3>
+            <div id="admin-activity-logs" style="display:flex; flex-direction:column; gap:12px; max-height: 500px; overflow-y:auto; padding-right:6px;">
+              <!-- Javascript dynamic logs load -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Page 10 (Chatbot Component): Floating AI Reservation Assistant -->
+  <div id="ai-chatbot-bubble" class="ai-chatbot-bubble" title="Luxe AI Assistant">💬</div>
+  <div id="ai-chatbot-window" class="ai-chatbot-window card">
+    <div class="ai-chat-header">
+      <div class="ai-chat-title-info">
+        <div class="ai-chat-avatar">🤖</div>
+        <div>
+          <div class="ai-chat-name">Luxe Dining AI</div>
+          <div class="ai-chat-status">● Online</div>
+        </div>
+      </div>
+      <button id="ai-chat-close" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.1rem;">✕</button>
+    </div>
+    
+    <!-- Conversation history -->
+    <div class="ai-chat-body" id="ai-chat-body">
+      <div class="chat-msg incoming">
+        Hello! I am Luxe Dining AI Assistant. I can recommend tables, analyze your preference history, check peak times, or help you book tables immediately!
+      </div>
+    </div>
+
+    <!-- Quick action chips helper -->
+    <div style="display:flex; gap:8px; padding:10px 16px; background:var(--bg-secondary); border-top:1px solid var(--border-glass); flex-wrap:wrap;">
+      <button class="btn btn-secondary chat-chip" style="padding: 4px 8px; font-size: 0.75rem; border-radius: 12px;">Recommend a table</button>
+      <button class="btn btn-secondary chat-chip" style="padding: 4px 8px; font-size: 0.75rem; border-radius: 12px;">Predict peak times</button>
+      <button class="btn btn-secondary chat-chip" style="padding: 4px 8px; font-size: 0.75rem; border-radius: 12px;">Show my preferences</button>
+    </div>
+
+    <div class="ai-chat-footer">
+      <input type="text" id="ai-chat-input" class="input-control" placeholder="Ask Luxe AI...">
+      <button id="ai-chat-send" class="chat-send-btn">➔</button>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>Luxe Dining</h3>
+        <p>Combining world-class gourmet gastronomy, real-time interactive 3D seating planning, and personalized AI assistants to craft unforgettable experiences.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Gourmet Hours</h3>
+        <ul>
+          <li>Monday - Thursday: 12:00 PM - 10:00 PM</li>
+          <li>Friday - Saturday: 12:00 PM - 11:30 PM</li>
+          <li>Sunday: 12:00 PM - 10:00 PM</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>📍 12 Regency Court, Manhattan, NY</li>
+          <li>📞 +1 (555) 0122</li>
+          <li>✉ reservations@luxedining.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Luxe Dining Monolith. All rights reserved. Secure JWT encrypted protocols.</p>
+    </div>
+  </footer>
+
+  <!-- Include CDN Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Include Project Custom Modules -->
+  <script src="database.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="charts.js"></script>
+  <script src="three-d-layout.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
