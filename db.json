@@ -53,6 +53,42 @@
       "password": "525252",
       "role": "Customer",
       "createdAt": "2026-06-06T06:13:05.939Z"
+    },
+    {
+      "id": "usr-t1",
+      "name": "sajil sharon",
+      "email": "sajilsharon79@gmail.com",
+      "phone": "+91 (555) 0001",
+      "password": "teammate123",
+      "role": "Customer",
+      "createdAt": "2026-06-30T10:00:00Z"
+    },
+    {
+      "id": "usr-t2",
+      "name": "neriah malise",
+      "email": "neriahmaliseb@gmail.com",
+      "phone": "+91 (555) 0002",
+      "password": "teammate123",
+      "role": "Customer",
+      "createdAt": "2026-06-30T10:00:00Z"
+    },
+    {
+      "id": "usr-t3",
+      "name": "bavya prabhu",
+      "email": "bavyaprabhuprabhu@gmail.com",
+      "phone": "+91 (555) 0003",
+      "password": "teammate123",
+      "role": "Customer",
+      "createdAt": "2026-06-30T10:00:00Z"
+    },
+    {
+      "id": "usr-t4",
+      "name": "aakash",
+      "email": "aakashaakash5306@gmail.com",
+      "phone": "+91 (555) 0004",
+      "password": "teammate123",
+      "role": "Customer",
+      "createdAt": "2026-06-30T10:00:00Z"
     }
   ],
   "tables": [

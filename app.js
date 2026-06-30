@@ -389,34 +389,37 @@ function initTable3DLayoutPage() {
   }
   if (reserveBtn) reserveBtn.disabled = true;
 
-  // Render Table Layout
-  threeDLayout.init('three-d-canvas-container', (tableId) => {
-    const tables = db.getTables();
-    const table = tables.find(t => t.id === tableId);
-    if (table) {
-      bookingState.selectedTableId = table.id;
-      bookingState.tableName = table.name;
+  // Render Table Layout (delayed slightly to allow transition animations to settle)
+  setTimeout(() => {
+    threeDLayout.init('three-d-canvas-container', (tableId) => {
+      const tables = db.getTables();
+      const table = tables.find(t => t.id === tableId);
+      if (table) {
+        bookingState.selectedTableId = table.id;
+        bookingState.tableName = table.name;
 
-      if (sidePanel) {
-        sidePanel.innerHTML = `
-          <span class="table-badge-large">${table.name}</span>
-          <div class="sidebar-row mt-4"><span>Category:</span> <strong>${table.category}</strong></div>
-          <div class="sidebar-row"><span>Max Capacity:</span> <strong>${table.capacity} guests</strong></div>
-          <div class="sidebar-row"><span>Area:</span> <strong>${table.area.toUpperCase()}</strong></div>
-          <div class="sidebar-row"><span>Occasion Match:</span> <strong style="color: var(--gold-primary);">High Fidelity</strong></div>
-          
-          <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; line-height:1.5;">
-            ${bookingState.guests > table.capacity 
-              ? `<span style="color: var(--accent-red);">⚠ Group size exceeds table capacity!</span>` 
-              : `✓ Perfect match for your group of ${bookingState.guests}.`}
-          </div>
-        `;
+        if (sidePanel) {
+          sidePanel.innerHTML = `
+            <span class="table-badge-large">${table.name}</span>
+            <div class="sidebar-row mt-4"><span>Category:</span> <strong>${table.category}</strong></div>
+            <div class="sidebar-row"><span>Max Capacity:</span> <strong>${table.capacity} guests</strong></div>
+            <div class="sidebar-row"><span>Area:</span> <strong>${table.area.toUpperCase()}</strong></div>
+            <div class="sidebar-row"><span>Occasion Match:</span> <strong style="color: var(--gold-primary);">High Fidelity</strong></div>
+            
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; line-height:1.5;">
+              ${bookingState.guests > table.capacity 
+                ? `<span style="color: var(--accent-red);">⚠ Group size exceeds table capacity!</span>` 
+                : `✓ Perfect match for your group of ${bookingState.guests}.`}
+            </div>
+          `;
+        }
+        if (reserveBtn) {
+          reserveBtn.disabled = bookingState.guests > table.capacity;
+        }
       }
-      if (reserveBtn) {
-        reserveBtn.disabled = bookingState.guests > table.capacity;
-      }
-    }
-  });
+    });
+    threeDLayout.update(bookingState.date, bookingState.timeSlot);
+  }, 150);
 
   // Pull dynamic table recommendations from Gemini
   const existingRecommendBox = document.getElementById('layout-ai-recommendation-box');
@@ -455,8 +458,6 @@ function initTable3DLayoutPage() {
       aiBox.innerHTML = `🤖 <strong>Luxe AI Recommends:</strong> VIP suites and Patio garden tables are highly recommended for your group.`;
     });
   }
-
-  threeDLayout.update(bookingState.date, bookingState.timeSlot);
 }
 
 function initConfirmationPage() {

@@ -36,7 +36,12 @@ const SEED_USERS = [
   { id: 'usr-1', name: 'Admin User', email: 'admin@luxedining.com', phone: '+1 (555) 0199', password: 'admin123', role: 'Admin', createdAt: '2026-05-01T10:00:00Z' },
   { id: 'usr-2', name: 'Staff Member', email: 'staff@luxedining.com', phone: '+1 (555) 0288', password: 'staff123', role: 'Staff', createdAt: '2026-05-02T10:00:00Z' },
   { id: 'usr-3', name: 'John Doe', email: 'customer@luxedining.com', phone: '+1 (555) 0377', password: 'customer123', role: 'Customer', createdAt: '2026-05-03T10:00:00Z' },
-  { id: 'usr-4', name: 'Sarah Jenkins', email: 'sarah@example.com', phone: '+1 (555) 0466', password: 'customer123', role: 'Customer', createdAt: '2026-05-10T12:30:00Z' }
+  { id: 'usr-4', name: 'Sarah Jenkins', email: 'sarah@example.com', phone: '+1 (555) 0466', password: 'customer123', role: 'Customer', createdAt: '2026-05-10T12:30:00Z' },
+  { id: 'usr-t1', name: 'sajil sharon', email: 'sajilsharon79@gmail.com', phone: '+91 (555) 0001', password: 'teammate123', role: 'Customer', createdAt: '2026-06-30T10:00:00Z' },
+  { id: 'usr-t2', name: 'neriah malise', email: 'neriahmaliseb@gmail.com', phone: '+91 (555) 0002', password: 'teammate123', role: 'Customer', createdAt: '2026-06-30T10:00:00Z' },
+  { id: 'usr-t3', name: 'bavya prabhu', email: 'bavyaprabhuprabhu@gmail.com', phone: '+91 (555) 0003', password: 'teammate123', role: 'Customer', createdAt: '2026-06-30T10:00:00Z' },
+  { id: 'usr-t4', name: 'aakash', email: 'aakashaakash5306@gmail.com', phone: '+91 (555) 0004', password: 'teammate123', role: 'Customer', createdAt: '2026-06-30T10:00:00Z' },
+  { id: 'usr-t5', name: 'aravindh', email: 'aravindh1057335@gmail.com', phone: '+91 8610680124', password: 'teammate123', role: 'Customer', createdAt: '2026-06-30T10:00:00Z' }
 ];
 
 const SEED_TABLES = [

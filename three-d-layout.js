@@ -20,6 +20,7 @@ function destroyThreeD() {
       renderer.domElement.remove();
     }
   }
+  window.removeEventListener('resize', onWindowResize);
   // Remove event listeners
   const container = document.getElementById('three-d-canvas-container');
   if (container) {
@@ -55,8 +56,14 @@ function initThreeD(containerId, onTableSelect) {
   scene.fog = new THREE.FogExp2(0x240407, 0.015);
 
   // 2. Camera setup
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+  let width = container.clientWidth;
+  let height = container.clientHeight;
+  if (width === 0 || height === 0) {
+    const rect = container.getBoundingClientRect();
+    width = rect.width || window.innerWidth;
+    height = rect.height || 500;
+  }
+
   camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
   camera.position.set(0, 14, 16);
 
@@ -99,7 +106,8 @@ function initThreeD(containerId, onTableSelect) {
 
   // 7. Event Listeners
   window.addEventListener('resize', onWindowResize);
-  renderer.domElement.addEventListener('click', onCanvasClick);
+  renderer.domElement.addEventListener('pointerdown', onPointerDown);
+  renderer.domElement.addEventListener('pointerup', onPointerUp);
   renderer.domElement.addEventListener('mousemove', onCanvasMouseMove);
 
   // 8. Start Animation loop
@@ -360,8 +368,22 @@ function setSelectedTable(tableId) {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-function onCanvasClick(event) {
+let pointerDownX = 0;
+let pointerDownY = 0;
+
+function onPointerDown(event) {
+  pointerDownX = event.clientX;
+  pointerDownY = event.clientY;
+}
+
+function onPointerUp(event) {
   if (!renderer || !camera) return;
+
+  // Calculate drag distance
+  const distance = Math.hypot(event.clientX - pointerDownX, event.clientY - pointerDownY);
+  
+  // Only register as a tap/click if drag is minimal (less than 6 pixels)
+  if (distance > 6) return;
 
   // Calculate mouse position relative to canvas
   const rect = renderer.domElement.getBoundingClientRect();
